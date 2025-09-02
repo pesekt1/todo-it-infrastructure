@@ -1,4 +1,4 @@
-# Todo web application demo
+# Todo web application demo for IT Infrastructure course
 
 Clone the repository - for example using VS Code.
 
