@@ -28,7 +28,7 @@ npm install
 In the `todo-api` folder, create a `.env` file with the following content:
 
 ```
-MONGODB_URI=mongodb://localhost:27017/todos
+MONGO_URI=mongodb://localhost:27017/todos
 ```
 
 In the `todo-app` folder, create a `.env` file with the following content:
