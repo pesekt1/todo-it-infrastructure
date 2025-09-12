@@ -13,9 +13,6 @@ services:
       - ./todo-api:/app # Mount the local directory to the container
     depends_on:
       - mongo # Wait for the mongo service to be ready
-    networks:
-      - backend # Connect to the backend network
-      - frontend # Connect to the frontend network
 
   todo-app:
     container_name: todo-app
@@ -32,24 +29,14 @@ services:
       - /app/node_modules # Prevent the node_modules directory from being mounted
     depends_on:
       - todo-api # Wait for the todo-api service to be ready
-    networks:
-      - frontend # Connect to the frontend network
 
   mongo:
     container_name: mongo
     image: mongo:latest # Use the latest MongoDB image
     volumes:
       - mongo-data:/data/db # Persist the data locally
-    networks:
-      - backend # Connect to the backend network
     ports:
       - "27018:27017" # Map the container port to the host port
-
-networks:
-  frontend:
-    driver: bridge # Use the default bridge network
-  backend:
-    driver: bridge # Use the default bridge network
 
 volumes:
   mongo-data:
