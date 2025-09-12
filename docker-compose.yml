@@ -43,7 +43,7 @@ services:
     networks:
       - backend # Connect to the backend network
     ports:
-      - "27017:27017" # Map the container port to the host port
+      - "27018:27017" # Map the container port to the host port
 
 networks:
   frontend:
