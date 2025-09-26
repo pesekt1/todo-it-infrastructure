@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-app
+  template:
+    metadata:
+      labels:
+        app: todo-app
+    spec:
+      containers:
+        - name: todo-app
+          image: pesekt1/todo-app:latest # image on docker hub
+          ports:
+            - containerPort: 3000
+          env:
+            - name: VITE_API_URL
+              value: "http://localhost:5000" # Use localhost for local development and browser access, for kubernetes cluster, it would be http://todo-api:5000
+            - name: CHOKIDAR_USEPOLLING
+              value: "true"

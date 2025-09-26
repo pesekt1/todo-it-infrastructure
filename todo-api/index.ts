@@ -1,9 +1,10 @@
+import cors from "cors";
+import "dotenv/config";
 import express from "express";
+import os from "os"; // Add this import
+import todoRouter from "./routers/todoRouter";
 import dbConnect from "./startup/dbConnect";
 import seed from "./startup/seed";
-import "dotenv/config";
-import todoRouter from "./routers/todoRouter";
-import cors from "cors";
 
 dbConnect();
 seed();
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use("/todos", todoRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!!!!");
+  res.send(`Hello World from ${os.hostname()}!`);
 });
 
 app.listen(5000, () => {
